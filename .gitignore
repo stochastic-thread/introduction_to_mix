@@ -1,5 +1,8 @@
 /_build
+<<<<<<< HEAD
 /cover
+=======
+>>>>>>> 8d07376676c5d2025ccb4a391ffe71e16a2766f7
 /deps
 erl_crash.dump
 *.ez

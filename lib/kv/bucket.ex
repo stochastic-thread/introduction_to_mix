@@ -19,4 +19,13 @@ defmodule KV.Bucket do
   def put(bucket, key, value) do
     Agent.update(bucket, &HashDict.put(&1, key, value))
   end
+
+  @doc """
+  Deletes `key` from `bucket`.
+
+  Returns the current value of `key`, if `key` has a corresponding value
+  """
+  def delete(bucket, key) do
+    Agent.get_and_update(bucket, &HashDict.pop(&1, key))
+  end
 end

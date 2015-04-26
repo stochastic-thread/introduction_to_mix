@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 KV
-==
+===
 
 **TODO: Add description**
 =======

@@ -20,7 +20,7 @@ defmodule KV.Bucket do
   """
   def put(bucket, key, value) do
     Agent.update(bucket, 
-      fn dict -> HashDict.pop(dict, key, value)
+      fn dict -> HashDict.put(dict, key, value)
     end)
   end
 

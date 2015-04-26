@@ -10,14 +10,18 @@ defmodule KV.Bucket do
   Gets a value from the `bucket` by `key`.
   """
   def get(bucket, key) do
-    Agent.get(bucket, &HashDict.get(&1, key))
+    Agent.get(bucket, 
+      fn dict -> HashDict.get(dict, key) 
+    end)
   end
 
   @doc """
   Puts the value for the given `key` in the `bucket`.
   """
   def put(bucket, key, value) do
-    Agent.update(bucket, &HashDict.put(&1, key, value))
+    Agent.update(bucket, 
+      fn dict -> HashDict.pop(dict, key, value)
+    end)
   end
 
   @doc """
@@ -26,6 +30,8 @@ defmodule KV.Bucket do
   Returns the current value of `key`, if `key` has a corresponding value
   """
   def delete(bucket, key) do
-    Agent.get_and_update(bucket, &HashDict.pop(&1, key))
+    Agent.get_and_update(bucket, 
+      fn dict -> HashDict.pop(dict, key)
+    end)
   end
 end

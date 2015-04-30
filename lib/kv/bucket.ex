@@ -18,9 +18,10 @@ defmodule KV.Bucket do
   @doc """
   Puts the value for the given `key` in the `bucket`.
   """
+
   def put(bucket, key, value) do
     Agent.update(bucket, 
-      fn dict -> HashDict.put(dict, key, value)
+      fn dict-> HashDict.put(dict, key, value)
     end)
   end
 
@@ -31,7 +32,7 @@ defmodule KV.Bucket do
   """
   def delete(bucket, key) do
     Agent.get_and_update(bucket, 
-      fn dict -> HashDict.pop(dict, key)
+      fn dict-> HashDict.pop(dict, key)
     end)
   end
 end
